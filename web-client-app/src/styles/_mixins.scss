@@ -1,6 +1,6 @@
 @import "variables";
 
-@mixin ellipsis ($max-width){
+@mixin ellipsis ($max-width: null){
   display: inline-block;
   max-width: $max-width;
   overflow: hidden;
@@ -18,4 +18,10 @@
       @content;
     }
   }
+}
+
+@mixin border-radius($radius) {
+  -moz-border-radius: $radius;
+  -webkit-border-radius: $radius;
+  border-radius: $radius;
 }
