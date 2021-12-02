@@ -1,0 +1,9 @@
+@use "./src/styles/functions";
+
+.height-30 {
+  height: functions.rem(30px);
+}
+
+.width-30 {
+  width: functions.rem(30px);
+}

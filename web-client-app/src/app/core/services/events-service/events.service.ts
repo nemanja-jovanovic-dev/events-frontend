@@ -10,9 +10,18 @@ export class EventsService {
 
   constructor(private httpClient: HttpClient) { }
 
-  apiBaseUrl = '/events';
+  apiBaseUrl = 'http://localhost:8081/events';
 
   postEvent(event: EventsResponseModel): Observable<EventsResponseModel> {
     return this.httpClient.post<EventsResponseModel>(this.apiBaseUrl, event);
   }
+
+  // category(category: string): Observable<any> {
+  //   return this.httpClient.post<any>('/categories', category);
+  // }
+  //
+  category(): Observable<any> {
+    return this.httpClient.get<any>('http://localhost:8081/categories');
+  }
+
 }
