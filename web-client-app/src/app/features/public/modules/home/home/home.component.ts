@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {EventsService} from '../../../../../core/services/events-service/events.service';
 import {EventsResponseModel} from '../../../../../core/services/events-service/events-model/events-response.model';
+import {MatDialog} from '@angular/material/dialog';
 
 @Component({
   selector: 'app-home',
@@ -9,7 +10,7 @@ import {EventsResponseModel} from '../../../../../core/services/events-service/e
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private eventsService: EventsService) { }
+  constructor(private eventsService: EventsService, private dialog: MatDialog) { }
 
   ngOnInit(): void {
     const event: EventsResponseModel = {
@@ -27,5 +28,4 @@ export class HomeComponent implements OnInit {
       value => console.log('This is first psoted value: ', value)
     );
   }
-
 }

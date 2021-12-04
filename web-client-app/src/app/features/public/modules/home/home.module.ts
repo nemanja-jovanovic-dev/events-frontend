@@ -4,7 +4,7 @@ import {HomeContainerPreviewComponent} from './home-container-preview/home-conta
 import {RouterModule, Routes} from '@angular/router';
 import {HomeComponent} from './home/home.component';
 import {SharedModule} from '../../../../shared/shared.module';
-import {HeaderComponent} from '../../../../core/components/header/header.component';
+import {MatButtonModule} from '@angular/material/button';
 
 const routes: Routes = [
   {
@@ -18,11 +18,12 @@ const routes: Routes = [
     HomeContainerPreviewComponent,
     HomeComponent,
   ],
-    imports: [
-        CommonModule,
-        RouterModule,
-        RouterModule.forChild(routes),
-        SharedModule
-    ]
+  imports: [
+    CommonModule,
+    RouterModule,
+    RouterModule.forChild(routes),
+    SharedModule,
+    MatButtonModule,
+  ]
 })
 export class HomeModule { }
