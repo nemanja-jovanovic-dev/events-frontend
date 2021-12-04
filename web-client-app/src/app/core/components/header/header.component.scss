@@ -1,0 +1,44 @@
+@use "../../../../styles/variables";
+@use "../../../../styles/mixins";
+@use "../../../../styles/functions";
+
+.header {
+  height: functions.rem(72px);
+  padding: functions.rem(20px) functions.rem(100px);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  &__logo {
+    width: 30%;
+  }
+
+  &__nav {
+    height: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 70%;
+
+    &__item {
+      color: variables.$blue-d20;
+      font-size: 1rem;
+      line-height: 1.25;
+      transition: .2s;
+      cursor: pointer;
+      text-decoration: none;
+
+      &:hover {
+        color: variables.$blue-l80;
+      }
+    }
+
+    &__item + &__item {
+      margin-left: functions.rem(20px);
+    }
+  }
+}
+
+.activated-route {
+  color: red;
+}

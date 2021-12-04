@@ -1,0 +1,32 @@
+@use "src/styles/variables";
+@use "src/styles/mixins";
+@use "src/styles/functions";
+
+.btn {
+  height: functions.rem(32px);
+  min-width: functions.rem(100px);
+  padding: functions.rem(6px) functions.rem(20px);
+  border: none;
+  cursor: pointer;
+  user-select: none;
+  transition: .2s;
+  font-weight: 500;
+  @include mixins.border-radius(3px);
+
+  span {
+    @include mixins.ellipsis();
+  }
+
+  &.primary {
+    color: white;
+    background-color: variables.$red;
+
+    &:hover {
+      background-color: variables.$red-l80;
+    }
+
+    &:active {
+      background-color: variables.$red-d20;
+    }
+  }
+}

@@ -1,0 +1,70 @@
+$base-size: 16px;
+
+$breakpoints: (
+  "phone":        400px,
+  "phone-wide":   480px,
+  "phablet":      560px,
+  "tablet-small": 640px,
+  "tablet":       768px,
+  "tablet-wide":  1024px,
+  "desktop":      1248px,
+  "desktop-wide": 1440px
+);
+
+$black: black;
+$white: white;
+
+$orange: #F58865;
+$orange-l20: mix($orange, $white, 20%);
+$orange-l40: mix($orange, $white, 40%);
+$orange-l60: mix($orange, $white, 60%);
+$orange-l80: mix($orange, $white, 80%);
+
+$orange-d20: mix($orange, $black, 80%);
+$orange-d40: mix($orange, $black, 60%);
+$orange-d60: mix($orange, $black, 40%);
+$orange-d80: mix($orange, $black, 20%);
+
+$rose: #EE356A;
+$rose-l20: mix($rose, $white, 20%);
+$rose-l40: mix($rose, $white, 40%);
+$rose-l60: mix($rose, $white, 60%);
+$rose-l80: mix($rose, $white, 80%);
+
+$rose-d20: mix($rose, $black, 80%);
+$rose-d40: mix($rose, $black, 60%);
+$rose-d60: mix($rose, $black, 40%);
+$rose-d80: mix($rose, $black, 20%);
+
+$red: #D02456;
+$red-l20: mix($red, $white, 20%);
+$red-l40: mix($red, $white, 40%);
+$red-l60: mix($red, $white, 60%);
+$red-l80: mix($red, $white, 80%);
+
+$red-d20: mix($red, $black, 80%);
+$red-d40: mix($red, $black, 60%);
+$red-d60: mix($red, $black, 40%);
+$red-d80: mix($red, $black, 20%);
+
+$blue: #24344C;
+$blue-l20: mix($blue, $white, 20%);
+$blue-l40: mix($blue, $white, 40%);
+$blue-l60: mix($blue, $white, 60%);
+$blue-l80: mix($blue, $white, 80%);
+
+$blue-d20: mix($blue, $black, 80%);
+$blue-d40: mix($blue, $black, 60%);
+$blue-d60: mix($blue, $black, 40%);
+$blue-d80: mix($blue, $black, 20%);
+
+$green: #008890;
+$green-l20: mix($green, $white, 20%);
+$green-l40: mix($green, $white, 40%);
+$green-l60: mix($green, $white, 60%);
+$green-l80: mix($green, $white, 80%);
+
+$green-d20: mix($green, $black, 80%);
+$green-d40: mix($green, $black, 60%);
+$green-d60: mix($green, $black, 40%);
+$green-d80: mix($green, $black, 20%);
