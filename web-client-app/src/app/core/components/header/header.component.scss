@@ -26,6 +26,7 @@
       line-height: 1.25;
       transition: .2s;
       cursor: pointer;
+      text-decoration: none;
 
       &:hover {
         color: variables.$blue-l80;
@@ -36,4 +37,8 @@
       margin-left: functions.rem(20px);
     }
   }
+}
+
+.activated-route {
+  color: red;
 }

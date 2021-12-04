@@ -13,6 +13,9 @@ const routes: Routes = [
   },
   {
     path: 'reservations', loadChildren: () => import('./modules/reservations/reservations.module').then(m => m.ReservationsModule)
+  },
+  {
+    path: 'registration', loadChildren: () => import('./modules/registration/registration.module').then(m => m.RegistrationModule)
   }
 ];
 
@@ -27,7 +30,7 @@ const routes: Routes = [
   ],
   exports: [RouterModule, PublicPreviewComponent],
   declarations: [
-    PublicPreviewComponent
+    PublicPreviewComponent,
   ]
 })
 export class PublicModule { }
