@@ -4,5 +4,5 @@ export const PUBLIC_HOME = PUBLIC_ROUTE + '/home';
 
 export const PUBLIC_RESERVATIONS = PUBLIC_ROUTE + '/reservations';
 
-export const PUBLIC_REGISTRATION = PUBLIC_ROUTE + '/registration';
+export const PUBLIC_MAP = PUBLIC_ROUTE + '/map';
 

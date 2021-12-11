@@ -7,9 +7,16 @@
   </div>
 
   <nav class="header__nav">
-    <a class="header__nav__item" [routerLink]="[PUBLIC_HOME]" routerLinkActive="activated-route">Home</a>
-    <a class="header__nav__item" [routerLink]="[PUBLIC_RESERVATIONS]" routerLinkActive="activated-route">Reservations</a>
-    <a class="header__nav__item">Map</a>
-    <a class="header__nav__item" [routerLink]="[PUBLIC_REGISTRATION]">Register</a>
+
+    <ng-container *ngIf="isUserLoggedIn">
+      <a class="header__nav__item" [routerLink]="[PUBLIC_HOME]" routerLinkActive="activated-route">Home</a>
+      <a class="header__nav__item" [routerLink]="[PUBLIC_RESERVATIONS]" routerLinkActive="activated-route">Reservations</a>
+      <a class="header__nav__item" [routerLink]="[PUBLIC_MAP]" routerLinkActive="activated-route">Map</a>
+    </ng-container>
+
+    <ng-container *ngIf="!isUserLoggedIn">
+      <app-button [cssClass]="'primary'" (click)="openUserRegistrationDialog()">Register</app-button>
+      <app-button [cssClass]="'secondary'" (click)="openUserLoginDialog()">Login</app-button>
+    </ng-container>
   </nav>
 </header>
