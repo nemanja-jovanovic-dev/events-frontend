@@ -1,0 +1,32 @@
+@use "src/styles/mixins";
+@use "src/styles/functions";
+@use "src/styles/variables";
+
+.registration {
+  width: functions.rem(600px);
+
+  .form {
+    margin-top: functions.rem(40px);
+
+    &__name, &__location {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    &__first-name, &__last-name, &__address, &__city {
+      width: 48%;
+    }
+
+    &__footer {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: functions.rem(40px);
+    }
+
+    &__cancel {
+      margin-left: functions.rem(20px);
+    }
+  }
+}

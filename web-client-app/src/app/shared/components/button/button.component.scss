@@ -29,4 +29,25 @@
       background-color: variables.$red-d20;
     }
   }
+
+  &.secondary {
+    color: variables.$gray;
+    border: 1px solid variables.$gray;
+    border-radius: functions.rem(3px);
+    background: none;
+
+    &:hover {
+      border-color: variables.$gray-l80;
+    }
+
+    &:active {
+      color: variables.$red-d20;
+      border-color: variables.$red-d20;
+    }
+  }
+
+  .disabled {
+    background-color: variables.$gray-l80;
+    color: variables.$gray;
+  }
 }

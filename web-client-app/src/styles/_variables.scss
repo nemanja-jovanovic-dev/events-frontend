@@ -13,6 +13,8 @@ $breakpoints: (
 
 $black: black;
 $white: white;
+$gray: mix($white, $black, 20%);
+$gray-l80: mix($white, $black, 80%);
 
 $orange: #F58865;
 $orange-l20: mix($orange, $white, 20%);

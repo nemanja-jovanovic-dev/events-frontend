@@ -1,4 +1,7 @@
-<button class="btn {{cssClass}} {{shape}}">
+<button class="btn {{cssClass}} {{shape}}"
+        [class.disabled]="disabled"
+        [type]="type"
+        [disabled]="disabled">
   <span>
     <ng-content></ng-content>
   </span>
