@@ -1,6 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import {Form, FormControl, FormGroup, Validators} from '@angular/forms';
+import {Component, OnInit} from '@angular/core';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {MatDialog} from '@angular/material/dialog';
+import * as CoreActions from '../../../store/core.actions';
+import {Store} from '@ngrx/store';
+import {AppState} from '../../../store';
 
 @Component({
   selector: 'app-registration',
@@ -17,7 +20,7 @@ export class RegistrationComponent implements OnInit {
   addressFormControl = new FormControl('', Validators.required);
   cityFormControl = new FormControl('', Validators.required);
 
-  constructor(private dialog: MatDialog) { }
+  constructor(private dialog: MatDialog, private store: Store<AppState>) { }
 
   ngOnInit(): void {
     this.form = new FormGroup({
@@ -32,6 +35,7 @@ export class RegistrationComponent implements OnInit {
 
   onSubmit(): void {
 
+    this.store.dispatch(CoreActions.showMessage({message: 'Action works!'}));
     if (this.form.invalid) {
       console.log('Invalid form');
     }
