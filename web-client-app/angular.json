@@ -126,5 +126,8 @@
       }
     }
   },
-  "defaultProject": "web-client-app"
+  "defaultProject": "web-client-app",
+  "cli": {
+    "defaultCollection": "@ngrx/schematics"
+  }
 }
