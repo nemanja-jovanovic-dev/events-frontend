@@ -12,6 +12,8 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatDialogModule} from '@angular/material/dialog';
 import {StoreModule} from '@ngrx/store';
 import {metaReducers, reducers} from './store';
+import { EffectsModule } from '@ngrx/effects';
+import { CoreEffects } from './store/core.effects';
 
 @NgModule({
   declarations: [
@@ -33,6 +35,7 @@ import {metaReducers, reducers} from './store';
     BrowserAnimationsModule,
     StoreModule.forRoot(reducers, { metaReducers }),
     !environment.production ? StoreDevtoolsModule.instrument() : [],
+    EffectsModule.forRoot([CoreEffects]),
   ],
   providers: [],
   bootstrap: [AppComponent]
