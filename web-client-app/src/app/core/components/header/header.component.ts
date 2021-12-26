@@ -27,6 +27,6 @@ export class HeaderComponent {
   }
 
   openUserLoginDialog(): void {
-    this.dialog.open(LoginComponent);
+    this.dialog.open(LoginComponent, {disableClose: true});
   }
 }

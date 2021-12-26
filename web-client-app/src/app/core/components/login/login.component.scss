@@ -1,0 +1,34 @@
+@use "src/styles/mixins";
+@use "src/styles/variables";
+@use "src/styles/functions";
+
+.login {
+  padding: functions.rem(20px);
+  width: 400px;
+  height: auto;
+
+  .title {
+    margin-bottom: functions.rem(40px);
+  }
+
+  .form-wrapper {
+    display: flex;
+    flex-direction: column;
+
+    .form {
+      .form__item + .form__item {
+        margin-top: functions.rem(20px);
+      }
+
+      .button-wrapper {
+        display: flex;
+        justify-content: center;
+        margin-top: functions.rem(40px);
+
+        &__button + &__button {
+          margin-left: functions.rem(20px);
+        }
+      }
+    }
+  }
+}
