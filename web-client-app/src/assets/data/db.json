@@ -1,0 +1,22 @@
+{
+  "posts": [
+    { "id": 1, "title": "json-server", "author": "typicode" }
+  ],
+  "comments": [
+    { "id": 1, "body": "some comment", "postId": 1 }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "firstName": "Nemanja",
+      "lastName": "Jovanovic",
+      "email": "nemanja.jovanovicgd@gmail.com"
+    },
+    {
+      "id": 2,
+      "firstName": "David",
+      "lastName": "Salatic",
+      "email": "david.salatic@gmail.com"
+    }
+  ]
+}

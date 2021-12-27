@@ -1,1 +1,48 @@
-<p>login works!</p>
+<div class="login">
+
+  <h3 class="title">Log in</h3>
+
+  <div class="form-wrapper">
+    <form class="form"
+          [formGroup]="form">
+
+      <div class="form__item">
+        <mat-form-field appearance="fill">
+          <mat-label>Email</mat-label>
+          <input matInput
+                 required
+                 type="text"
+                 [formControl]="username">
+        </mat-form-field>
+      </div>
+
+      <div class="form__item">
+        <mat-form-field appearance="fill">
+          <mat-label>Password</mat-label>
+          <input matInput
+                 required
+                 type="password"
+                 [formControl]="password">
+        </mat-form-field>
+      </div>
+
+      <div class="button-wrapper">
+        <div class="button-wrapper__button">
+          <button mat-raised-button
+                  color="primary"
+                  [disabled]="form.invalid"
+                  (click)="onSubmit()">
+            Log in
+          </button>
+        </div>
+        <div class="button-wrapper__button">
+          <button mat-button
+                  color="primary"
+                  (click)="onClose()">
+            Cancel
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

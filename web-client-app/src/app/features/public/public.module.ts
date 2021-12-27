@@ -7,16 +7,21 @@ import {CoreModule} from '../../core/core.module';
 import {HeaderModule} from '../../core/components/header/header.module';
 
 const routes: Routes = [
-  {path: '', redirectTo: 'home', pathMatch: 'full'},
-  {
-    path: 'home', loadChildren: () => import('./modules/home/home.module').then(m => m.HomeModule)
-  },
-  {
-    path: 'reservations', loadChildren: () => import('./modules/reservations/reservations.module').then(m => m.ReservationsModule)
-  },
-  {
-    path: 'map', loadChildren: () => import('./modules/map/map.module').then(m => m.MapModule)
-  }
+  {path: '', component: PublicPreviewComponent, children: [
+      {
+        path: '', redirectTo: 'home', pathMatch: 'full'
+      },
+      {
+        path: 'home', loadChildren: () => import('./modules/home/home.module').then(m => m.HomeModule)
+      },
+      {
+        path: 'reservations', loadChildren: () => import('./modules/reservations/reservations.module').then(m => m.ReservationsModule)
+      },
+      {
+        path: 'map', loadChildren: () => import('./modules/map/map.module').then(m => m.MapModule)
+      }
+    ]},
+
 ];
 
 @NgModule({
