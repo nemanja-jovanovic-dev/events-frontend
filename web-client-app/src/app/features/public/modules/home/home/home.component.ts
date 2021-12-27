@@ -32,9 +32,9 @@ export class HomeComponent implements OnInit {
     //   value => console.log('This is first psoted value: ', value)
     // );
 
-    this.eventsService.category().subscribe(
-      value => console.log('This is first psoted value: ', value)
-    );
+    // this.eventsService.category().subscribe(
+    //   value => console.log('This is first psoted value: ', value)
+    // );
 
     this.loggedUsers$.subscribe(value => console.log('Logged users selector: ', value));
   }

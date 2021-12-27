@@ -1,5 +1,6 @@
 import {createAction, props} from '@ngrx/store';
 import {LoggedUserResponseModel} from '../core/services/logged-user-service/logged-user-model/logged-user-response.model';
+import {UserRegistrationRequestModel} from '../core/services/registration-rest-service/model/user-registration-request.model';
 
 export const loadCores = createAction(
   '[Core] Load Cores'
@@ -37,4 +38,14 @@ export const logIn = createAction(
 export const logInSuccess = createAction(
   '[Core] Log In Success',
   props<{ user: LoggedUserResponseModel }>()
+);
+
+export const userRegistration = createAction(
+  '[Core] User Registration',
+  props<{ user: UserRegistrationRequestModel }>()
+);
+
+export const userRegistrationSuccess = createAction(
+  '[Core] User Registration Success',
+  props<{ user: UserRegistrationRequestModel }>()
 );

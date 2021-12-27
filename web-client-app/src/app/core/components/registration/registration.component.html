@@ -35,34 +35,22 @@
     </mat-form-field>
 
     <mat-form-field appearance="fill">
-      <mat-label>Phone number</mat-label>
+      <mat-label>Password</mat-label>
       <input matInput
              required
-             type="tel"
-             [formControl]="phoneNumberFormControl">
+             type="password"
+             [formControl]="passwordFormControl">
     </mat-form-field>
 
-    <div class="form__location">
-      <div class="form__city">
-        <mat-form-field appearance="fill">
-          <mat-label>City</mat-label>
-          <input matInput
-                 required
-                 type="text"
-                 [formControl]="cityFormControl">
-        </mat-form-field>
-      </div>
-
-      <div class="form__address">
-        <mat-form-field appearance="fill">
-          <mat-label>Address</mat-label>
-          <input matInput
-                 required
-                 type="text"
-                 [formControl]="addressFormControl">
-        </mat-form-field>
-      </div>
-    </div>
+    <mat-form-field appearance="fill">
+      <mat-label>User role</mat-label>
+      <mat-select [formControl]="userRoleTypeFormControl" required>
+        <mat-option *ngFor="let userRoleTypeOption of userRoleTypeOptions"
+                    [value]="userRoleTypeOption.value">
+          {{userRoleTypeOption.viewValue}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
 
     <div class="form__footer">
       <div class="form__register">

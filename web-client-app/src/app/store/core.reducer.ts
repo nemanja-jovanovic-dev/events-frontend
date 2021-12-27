@@ -1,6 +1,7 @@
 import {Action, createFeatureSelector, createReducer, createSelector, on} from '@ngrx/store';
 import * as CoreAction from './core.actions';
 import {LoggedUserResponseModel} from '../core/services/logged-user-service/logged-user-model/logged-user-response.model';
+import {UserResponseModel} from '../core/services/registration-rest-service/model/user-response.model';
 
 
 export const coreFeatureKey = 'core';
@@ -11,11 +12,13 @@ export const loggedUsersSelector = createSelector(stateSelector, (state: State) 
 export interface State {
   message: string;
   loggedUsers: LoggedUserResponseModel[];
+  unconfirmedUser: UserResponseModel;
 }
 
 export const initialState: State = {
   message: null,
-  loggedUsers: []
+  loggedUsers: [],
+  unconfirmedUser: null
 };
 
 export const reducer = createReducer(
@@ -32,5 +35,12 @@ export const reducer = createReducer(
       ...state,
       loggedUsers: [payload]
     };
-  })
+  }),
+  on(CoreAction.userRegistrationSuccess, (state: State, {user}) => {
+    console.log('Unconfirmed user in reducer: ', user);
+    return {
+      ...state,
+      unconfirmedUser: user
+    };
+  }),
 );
