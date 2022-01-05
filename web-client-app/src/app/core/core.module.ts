@@ -14,6 +14,7 @@ import {MatOptionModule} from '@angular/material/core';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatDialogModule} from '@angular/material/dialog';
+import { FourOFourPageComponent } from './components/four-o-four-page/four-o-four-page.component';
 
 
 
@@ -21,7 +22,8 @@ import {MatDialogModule} from '@angular/material/dialog';
   declarations: [
     RegistrationComponent,
     LoginComponent,
-    MainComponent
+    MainComponent,
+    FourOFourPageComponent
   ],
   imports: [
     CommonModule,
@@ -41,7 +43,7 @@ import {MatDialogModule} from '@angular/material/dialog';
     MatButtonModule,
     MatProgressSpinnerModule,
     MatIconModule,
-    MatDialogModule
+    MatDialogModule,
   ]
 })
 export class CoreModule { }
