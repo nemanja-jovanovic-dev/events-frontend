@@ -3,51 +3,57 @@
 @use "src/styles/functions";
 
 .btn {
-  height: functions.rem(32px);
-  min-width: functions.rem(100px);
-  padding: functions.rem(6px) functions.rem(20px);
-  border: none;
-  cursor: pointer;
-  user-select: none;
-  transition: .2s;
-  font-weight: 500;
-  @include mixins.border-radius(3px);
+    border: none;
+    cursor: pointer;
+    font-weight: 500;
+    height: functions.rem(32px);
+    min-width: functions.rem(100px);
+    padding: functions.rem(6px) functions.rem(20px);
+    transition: .2s;
+    user-select: none;
+    @include mixins.border-radius(3px);
 
-  span {
-    @include mixins.ellipsis();
-  }
-
-  &.primary {
-    color: white;
-    background-color: variables.$red;
-
-    &:hover {
-      background-color: variables.$red-l80;
+    span {
+        @include mixins.ellipsis();
     }
 
-    &:active {
-      background-color: variables.$red-d20;
-    }
-  }
+    &.primary {
+        background-color: variables.$red;
+        color: white;
 
-  &.secondary {
-    color: variables.$gray;
-    border: 1px solid variables.$gray;
-    border-radius: functions.rem(3px);
-    background: none;
+        &:hover {
+            background-color: variables.$red-l80;
+        }
 
-    &:hover {
-      border-color: variables.$gray-l80;
+        &:active {
+            background-color: variables.$red-d20;
+        }
     }
 
-    &:active {
-      color: variables.$red-d20;
-      border-color: variables.$red-d20;
-    }
-  }
+    &.secondary {
+        background: none;
+        border: 1px solid variables.$gray;
+        border-radius: functions.rem(3px);
+        color: variables.$gray;
 
-  .disabled {
-    background-color: variables.$gray-l80;
-    color: variables.$gray;
-  }
+        &:hover {
+            border-color: variables.$gray-l80;
+        }
+
+        &:active {
+            border-color: variables.$red-d20;
+            color: variables.$red-d20;
+        }
+    }
+
+    .disabled {
+        background-color: variables.$gray-l80;
+        color: variables.$gray;
+    }
+
+    &.special {
+        height: functions.rem(56px);
+        width: functions.rem(200px);
+        font-size: functions.rem(16px);
+    }
 }
