@@ -1,5 +1,9 @@
 @import "./src/styles/functions";
 
 p {
-  font-size: rem(20px);
+    font-size: rem(20px);
+}
+
+.container {
+    padding: 2.5rem;
 }

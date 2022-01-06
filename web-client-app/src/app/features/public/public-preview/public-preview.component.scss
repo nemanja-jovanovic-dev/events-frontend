@@ -1,1 +1,7 @@
+@use "src/styles/functions";
+@use "src/styles/mixins";
+@use "src/styles/variables";
 
+.main {
+    overflow-x: hidden;
+}

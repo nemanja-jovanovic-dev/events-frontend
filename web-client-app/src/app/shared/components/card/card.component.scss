@@ -1,0 +1,9 @@
+@use "src/styles/mixins";
+@use "src/styles/variables";
+@use "src/styles/functions";
+
+.card {
+    &.medium {
+        width: functions.rem(400px);
+    }
+}

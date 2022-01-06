@@ -24,6 +24,7 @@
     "@ngrx/effects": "^12.5.1",
     "@ngrx/store": "^12.5.1",
     "@ngrx/store-devtools": "^12.5.1",
+    "font-awesome": "^4.7.0",
     "json-server": "^0.17.0",
     "redux-devtools-extension": "^2.13.9",
     "rxjs": "~6.6.0",

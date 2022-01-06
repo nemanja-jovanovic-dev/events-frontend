@@ -10,58 +10,47 @@ import {AppState} from './index';
 import {loggedUsersSelector} from './core.reducer';
 import {RegistrationRestService} from '../core/services/registration-rest-service/registration-rest.service';
 import {UserRegistrationRequestModel} from '../core/services/registration-rest-service/model/user-registration-request.model';
+import {ConfirmRegistrationRestService} from '../core/services/confirm-registration-service/confirm-registration-rest.service';
+import {ConfirmedUserResponseModel} from '../core/services/confirm-registration-service/model/confirmed-user-response.model';
 
 
 @Injectable()
 export class CoreEffects {
 
-  listOfUsers$: Observable<LoggedUserResponseModel[]> = this.store.select(loggedUsersSelector);
+    listOfUsers$: Observable<LoggedUserResponseModel[]> = this.store.select(loggedUsersSelector);
 
-  // getUsers$ = createEffect(() => this.actions$
-  //   .pipe(
-  //     ofType(fromActions.getUsers),
-  //     exhaustMap(_ => {
-  //       return this.loggedUserService.getUsers()
-  //         .pipe(
-  //           map((users: LoggedUserResponseModel) => {
-  //             return fromActions.getUsersSuccess({payload: users});
-  //           })
-  //         );
-  //     })
-  //   )
-  // );
-
-  // logIn$ = createEffect(() => this.actions$
-  //   .pipe(
-  //     ofType(fromActions.logIn),
-  //     exhaustMap(action => {
-  //       return this.loggedUserService.getUser(action.userId)
-  //         .pipe(
-  //           map((user: LoggedUserResponseModel) => {
-  //             return fromActions.logInSuccess({user});
-  //           })
-  //         );
-  //     })
-  //   )
-  // );
-
-  registerUnconfirmedUser$ = createEffect(() => this.actions$
-    .pipe(
-      ofType(fromActions.userRegistration),
-      exhaustMap(action => {
-        console.log('User to register: ', action.user);
-        return this.registrationRestService.createUnconfirmedUser(action.user)
-          .pipe(
-            map((unconfirmedUser: UserRegistrationRequestModel) => {
-              return fromActions.userRegistrationSuccess({user: unconfirmedUser});
+    registerUnconfirmedUser$ = createEffect(() => this.actions$
+        .pipe(
+            ofType(fromActions.userRegistration),
+            exhaustMap(action => {
+                return this.registrationRestService.createUnconfirmedUser(action.user)
+                    .pipe(
+                        map((unconfirmedUser: UserRegistrationRequestModel) => {
+                            return fromActions.userRegistrationSuccess({user: unconfirmedUser});
+                        })
+                    );
             })
-          );
-      })
-    )
-  );
+        )
+    );
 
-  constructor(private actions$: Actions,
-              private loggedUserService: LoggedUserService,
-              private store: Store<AppState>,
-              private registrationRestService: RegistrationRestService) {}
+    finishRegistrationWithToken$ = createEffect(() => this.actions$
+        .pipe(
+            ofType(fromActions.userFinishRegistrationWithToken),
+            exhaustMap(action => {
+                return this.confirmRegistrationRestService.createUser(action.token)
+                    .pipe(
+                        map((confirmedUser: ConfirmedUserResponseModel) => {
+                            return fromActions.userFinishRegistrationWithTokenSuccess({confirmedUser});
+                        })
+                    );
+            })
+        )
+    );
+
+    constructor(private actions$: Actions,
+                private loggedUserService: LoggedUserService,
+                private store: Store<AppState>,
+                private registrationRestService: RegistrationRestService,
+                private confirmRegistrationRestService: ConfirmRegistrationRestService) {
+    }
 }
