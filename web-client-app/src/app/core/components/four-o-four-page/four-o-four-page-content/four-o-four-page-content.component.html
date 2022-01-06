@@ -1,0 +1,13 @@
+<ng-container *ngIf="loading">
+    loading...
+</ng-container>
+
+
+<ng-container *ngIf="!loading">
+    <app-placeholder-template [buttonText]="'Go to home page'"
+                              [iconClass]="'fa fa-check-circle'"
+                              [message]="message"
+                              [templateSizeClass]="'large'"
+                              [title]="'Successfully registered!'">
+    </app-placeholder-template>
+</ng-container>

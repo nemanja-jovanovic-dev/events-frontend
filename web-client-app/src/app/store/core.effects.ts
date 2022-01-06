@@ -40,6 +40,7 @@ export class CoreEffects {
                 return this.confirmRegistrationRestService.createUser(action.token)
                     .pipe(
                         map((confirmedUser: ConfirmedUserResponseModel) => {
+                            console.log('Confirmed user in effect: ', confirmedUser);
                             return fromActions.userFinishRegistrationWithTokenSuccess({confirmedUser});
                         })
                     );

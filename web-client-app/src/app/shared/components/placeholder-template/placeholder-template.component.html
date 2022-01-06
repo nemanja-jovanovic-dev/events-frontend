@@ -1,1 +1,16 @@
-<p>placeholder-template works!</p>
+<div class="placeholder {{templateSizeClass}}">
+    <div class="placeholder__icon">
+        <i class="{{iconClass}}"></i>
+    </div>
+    <h2 class="placeholder__title">
+        {{title}}
+    </h2>
+    <p class="placeholder__message">
+        {{message}}
+    </p>
+    <button mat-raised-button
+            color="primary"
+            (click)="clickEvent.emit()">
+        {{buttonText}}
+    </button>
+</div>

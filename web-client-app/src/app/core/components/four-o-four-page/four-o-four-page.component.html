@@ -1,11 +1,5 @@
 <div class="container">
-    <div class="confirmation">
-        <h2 class="confirmation__title">
-
-        </h2>
-        <p class="confirmation__message">
-
-        </p>
-        <button mat-button></button>
-    </div>
+    <app-four-o-four-page-content [confirmedUser]="confirmedUser$ | async"
+                                  [loading]="loading$ | async">
+    </app-four-o-four-page-content>
 </div>
