@@ -1,0 +1,18 @@
+<div class="content">
+    <h3 class="content__title">Upcoming events</h3>
+
+    <div class="content__main">
+        <ng-container *ngFor="let event of events">
+            <app-card [size]="'medium'"
+                      [buttonText]="'Reserve'"
+                      [contentTitle]="event.title"
+                      [date]="event.date"
+                      [description]="event.description"
+                      [headerSubtitle]="event.createdByOrganizationName"
+                      [headerTitle]="event.title"
+                      [time]="event.start"
+                      [headerImage]="event.imagePath">
+            </app-card>
+        </ng-container>
+    </div>
+</div>

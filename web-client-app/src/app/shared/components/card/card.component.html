@@ -1,0 +1,36 @@
+<mat-card class="card {{size}}">
+    <mat-card-header>
+        <div mat-card-avatar class="example-header-image">
+            <img class="img" [src]="headerImage"
+                 alt="Photo of a Shiba Inu">
+        </div>
+
+        <mat-card-title>{{headerTitle}}</mat-card-title>
+        <mat-card-subtitle>{{headerSubtitle}}</mat-card-subtitle>
+        <div class="card__action-button">
+            <app-dropdown-menu></app-dropdown-menu>
+        </div>
+    </mat-card-header>
+    <img mat-card-image [src]="headerImage" alt="Photo of a Shiba Inu">
+    <mat-card-content>
+        <div class="card__date-time-container">
+            <div class="card__date">
+                <mat-icon>date_range</mat-icon>
+                <span>{{date}}</span>
+            </div>
+            <div class="card__time">
+                <mat-icon>access_time</mat-icon>
+                <span>{{time}}</span>
+            </div>
+        </div>
+        <h4 class="card__title">
+            {{contentTitle}}
+        </h4>
+        <p class="card__description">
+            {{description}}
+        </p>
+    </mat-card-content>
+    <mat-card-actions>
+        <button mat-button color="primary" (click)="clickEvent.emit()">Reserve</button>
+    </mat-card-actions>
+</mat-card>

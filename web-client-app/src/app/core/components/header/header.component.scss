@@ -8,6 +8,10 @@
     height: functions.rem(72px);
     justify-content: space-between;
     padding: functions.rem(20px) functions.rem(100px);
+    position: sticky;
+    top: 0;
+    z-index: 999;
+    background-color: variables.$white;
 
     &__logo {
         width: 30%;

@@ -1,29 +1,38 @@
-import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute, ActivatedRouteSnapshot} from '@angular/router';
+import {Component, OnInit} from '@angular/core';
+import {ActivatedRoute} from '@angular/router';
 import {ConfirmRegistrationRestService} from '../../services/confirm-registration-service/confirm-registration-rest.service';
+import * as fromActions from '../../../store/core.actions';
+import {take} from 'rxjs/operators';
+import {Store} from '@ngrx/store';
+import {AppState} from '../../../store';
+import {Observable} from 'rxjs';
+import {confirmedUserSelector, errorMessageSelector, loadingSelector} from '../../../store/core.reducer';
+import {ConfirmedUserResponseModel} from '../../services/confirm-registration-service/model/confirmed-user-response.model';
 
 @Component({
-  selector: 'app-four-o-four-page',
-  templateUrl: './four-o-four-page.component.html',
-  styleUrls: ['./four-o-four-page.component.scss']
+    selector: 'app-four-o-four-page',
+    templateUrl: './four-o-four-page.component.html',
+    styleUrls: ['./four-o-four-page.component.scss']
 })
 export class FourOFourPageComponent implements OnInit {
 
-  constructor(private route: ActivatedRoute, private confirmRegistrationRestService: ConfirmRegistrationRestService) { }
+    confirmedUser$: Observable<ConfirmedUserResponseModel> = this.store.select(confirmedUserSelector);
+    loading$: Observable<boolean> = this.store.select(loadingSelector);
+    error$: Observable<string> = this.store.select(errorMessageSelector);
 
-  ngOnInit(): void {
-    this.route.params.subscribe(value => console.log('activated route: ', value));
-    this.route.queryParams.subscribe(value => console.log('query params: ', value));
+    message: string;
 
-    this.route.url.subscribe(value =>
-      console.log('url activated route: ',
-        value.map(value1 =>
-          this.confirmRegistrationRestService.createUser(value1).subscribe(
-            subscribeValue => console.log('Value after confirm user: ', subscribeValue)
-          )
-        )
-      )
-    );
-  }
+    constructor(private route: ActivatedRoute,
+                private confirmRegistrationRestService: ConfirmRegistrationRestService,
+                private store: Store<AppState>) {
+    }
 
+    ngOnInit(): void {
+        this.route.url
+            .pipe(take(1))
+            .subscribe(urlParams =>
+                urlParams
+                    .map(param => this.store.dispatch(fromActions.userFinishRegistrationWithToken({token: param.path})))
+            );
+    }
 }

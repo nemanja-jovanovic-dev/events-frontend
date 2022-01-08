@@ -1,0 +1,48 @@
+@use "src/styles/mixins";
+@use "src/styles/variables";
+@use "src/styles/functions";
+
+.card {
+    position: relative;
+
+    &.medium {
+        width: functions.rem(300px);
+    }
+
+    &__action-button {
+        position: absolute;
+        top: functions.rem(16px);
+        right: functions.rem(-10px);
+    }
+
+    .img {
+        height: 100%;
+        width: 100%;
+        border-radius: 50%;
+    }
+
+    &__date-time-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    &__date, &__time {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+
+        span {
+            margin-left: functions.rem(10px);
+        }
+    }
+
+    &__title {
+        margin-top: functions.rem(20px);
+    }
+
+    &__description {
+        line-height: 1.5;
+        margin-top: functions.rem(10px);
+    }
+}

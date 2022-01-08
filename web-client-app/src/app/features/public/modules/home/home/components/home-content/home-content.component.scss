@@ -1,0 +1,17 @@
+@use "src/styles/functions";
+@use "src/styles/mixins";
+@use "src/styles/variables";
+
+.content {
+    margin-top: functions.rem(40px);
+
+    &__main {
+        margin-top: functions.rem(80px);
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(18.75rem, 1fr));
+        align-items: center;
+        justify-content: center;
+        grid-auto-flow: row;
+        gap: functions.rem(40px);
+    }
+}
