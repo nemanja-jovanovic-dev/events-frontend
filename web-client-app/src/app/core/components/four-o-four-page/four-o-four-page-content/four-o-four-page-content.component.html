@@ -3,11 +3,16 @@
 </ng-container>
 
 
-<ng-container *ngIf="!loading">
+<ng-container *ngIf="!loading && !error">
     <app-placeholder-template [buttonText]="'Go to home page'"
                               [iconClass]="'fa fa-check-circle'"
                               [message]="message"
                               [templateSizeClass]="'large'"
-                              [title]="'Successfully registered!'">
+                              [title]="'Successfully registered!'"
+                              (clickEvent)="onButtonClick()">
     </app-placeholder-template>
+</ng-container>
+
+<ng-container *ngIf="!!error">
+    <h2>{{error}}</h2>
 </ng-container>

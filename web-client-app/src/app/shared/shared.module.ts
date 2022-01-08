@@ -8,6 +8,9 @@ import {CardComponent} from './components/card/card.component';
 import {MatCardModule} from '@angular/material/card';
 import {MatButtonModule} from '@angular/material/button';
 import {PlaceholderTemplateComponent} from './components/placeholder-template/placeholder-template.component';
+import {DropdownMenuComponent} from './components/dropdown-menu/dropdown-menu.component';
+import {MatIconModule} from '@angular/material/icon';
+import {MatMenuModule} from '@angular/material/menu';
 
 const components = [
     ButtonComponent,
@@ -15,6 +18,7 @@ const components = [
     VideoPhotoPageCoverComponent,
     CardComponent,
     PlaceholderTemplateComponent,
+    DropdownMenuComponent,
 ];
 
 @NgModule({
@@ -27,6 +31,8 @@ const components = [
         ReactiveFormsModule,
         MatCardModule,
         MatButtonModule,
+        MatIconModule,
+        MatMenuModule,
     ],
     exports: [
         ...components,

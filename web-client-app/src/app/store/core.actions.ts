@@ -60,3 +60,8 @@ export const userFinishRegistrationWithTokenSuccess = createAction(
     '[Core] User Registration Finished With Token Success',
     props<{ confirmedUser: ConfirmedUserResponseModel }>()
 );
+
+export const userFinishRegistrationWithTokenFailed = createAction(
+    '[Core] User Registration Finished With Token Failed',
+    props<{ errorMessage: string }>()
+);

@@ -12,14 +12,10 @@ import {loggedUsersSelector} from '../../../../../store/core.reducer';
     templateUrl: './home.component.html',
     styleUrls: ['./home.component.scss']
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent {
 
     loggedUsers$: Observable<LoggedUserResponseModel[]> = this.store.select(loggedUsersSelector);
 
     constructor(private eventsService: EventsService, private dialog: MatDialog, private store: Store<AppState>) {
-    }
-
-    ngOnInit(): void {
-        console.log('works');
     }
 }

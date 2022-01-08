@@ -5,6 +5,7 @@ import {RouterModule, Routes} from '@angular/router';
 import {HomeComponent} from './home/home.component';
 import {SharedModule} from '../../../../shared/shared.module';
 import {MatButtonModule} from '@angular/material/button';
+import { HomeContentComponent } from './home/components/home-content/home-content.component';
 
 const routes: Routes = [
   {
@@ -17,6 +18,7 @@ const routes: Routes = [
   declarations: [
     HomeContainerPreviewComponent,
     HomeComponent,
+    HomeContentComponent,
   ],
   imports: [
     CommonModule,

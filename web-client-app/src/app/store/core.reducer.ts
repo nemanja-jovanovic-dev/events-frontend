@@ -11,6 +11,7 @@ const stateSelector = createFeatureSelector<State>(coreFeatureKey);
 export const loggedUsersSelector = createSelector(stateSelector, (state: State) => state.loggedUsers);
 export const confirmedUserSelector = createSelector(stateSelector, (state: State) => state.confirmedUserDetails);
 export const loadingSelector = createSelector(stateSelector, (state: State) => state.loading);
+export const errorMessageSelector = createSelector(stateSelector, (state: State) => state.error);
 
 export interface State {
     loading: boolean;
@@ -18,6 +19,7 @@ export interface State {
     loggedUsers: LoggedUserResponseModel[];
     unconfirmedUser: UserResponseModel;
     confirmedUserDetails: ConfirmedUserResponseModel;
+    error: string;
 }
 
 export const initialState: State = {
@@ -25,7 +27,8 @@ export const initialState: State = {
     message: null,
     loggedUsers: [],
     unconfirmedUser: null,
-    confirmedUserDetails: null
+    confirmedUserDetails: null,
+    error: null
 };
 
 export const reducer = createReducer(
@@ -53,11 +56,17 @@ export const reducer = createReducer(
         };
     }),
     on(CoreAction.userFinishRegistrationWithTokenSuccess, (state: State, {confirmedUser}) => {
-        console.log('Confirmed user in reducer: ', confirmedUser);
         return {
             ...state,
             loading: false,
             confirmedUserDetails: confirmedUser
+        };
+    }),
+    on(CoreAction.userFinishRegistrationWithTokenFailed, (state: State, {errorMessage}) => {
+        return {
+            ...state,
+            loading: false,
+            error: errorMessage
         };
     }),
 );

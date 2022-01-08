@@ -6,7 +6,7 @@ import {take} from 'rxjs/operators';
 import {Store} from '@ngrx/store';
 import {AppState} from '../../../store';
 import {Observable} from 'rxjs';
-import {confirmedUserSelector, loadingSelector} from '../../../store/core.reducer';
+import {confirmedUserSelector, errorMessageSelector, loadingSelector} from '../../../store/core.reducer';
 import {ConfirmedUserResponseModel} from '../../services/confirm-registration-service/model/confirmed-user-response.model';
 
 @Component({
@@ -18,6 +18,7 @@ export class FourOFourPageComponent implements OnInit {
 
     confirmedUser$: Observable<ConfirmedUserResponseModel> = this.store.select(confirmedUserSelector);
     loading$: Observable<boolean> = this.store.select(loadingSelector);
+    error$: Observable<string> = this.store.select(errorMessageSelector);
 
     message: string;
 

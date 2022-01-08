@@ -3,5 +3,21 @@
 @use "mixins";
 
 .mat-form-field {
-  width: 100%;
+    width: 100%;
+}
+
+.mat-card-image {
+    height: functions.rem(140px);
+    object-fit: cover;
+    object-position: center;
+}
+
+.material-icons {
+    font-size: functions.rem(20px);
+}
+
+.mat-icon {
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
 }

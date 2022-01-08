@@ -1,10 +1,10 @@
 import {Injectable} from '@angular/core';
 import {Actions, createEffect, ofType} from '@ngrx/effects';
 import * as fromActions from './core.actions';
-import {exhaustMap, map} from 'rxjs/operators';
+import {catchError, exhaustMap, map, take} from 'rxjs/operators';
 import {LoggedUserService} from '../core/services/logged-user-service/logged-user.service';
 import {LoggedUserResponseModel} from '../core/services/logged-user-service/logged-user-model/logged-user-response.model';
-import {Observable} from 'rxjs';
+import {Observable, of} from 'rxjs';
 import {Store} from '@ngrx/store';
 import {AppState} from './index';
 import {loggedUsersSelector} from './core.reducer';
@@ -12,6 +12,8 @@ import {RegistrationRestService} from '../core/services/registration-rest-servic
 import {UserRegistrationRequestModel} from '../core/services/registration-rest-service/model/user-registration-request.model';
 import {ConfirmRegistrationRestService} from '../core/services/confirm-registration-service/confirm-registration-rest.service';
 import {ConfirmedUserResponseModel} from '../core/services/confirm-registration-service/model/confirmed-user-response.model';
+import {error} from 'protractor';
+import {log} from 'util';
 
 
 @Injectable()
@@ -40,8 +42,14 @@ export class CoreEffects {
                 return this.confirmRegistrationRestService.createUser(action.token)
                     .pipe(
                         map((confirmedUser: ConfirmedUserResponseModel) => {
-                            console.log('Confirmed user in effect: ', confirmedUser);
                             return fromActions.userFinishRegistrationWithTokenSuccess({confirmedUser});
+                        }),
+                        catchError((confirmedUserError) => {
+                            console.error('Server status: ', confirmedUserError.status);
+                            this.store.dispatch(fromActions.userFinishRegistrationWithTokenFailed({
+                                errorMessage: confirmedUserError.error
+                            }));
+                            return of(null);
                         })
                     );
             })

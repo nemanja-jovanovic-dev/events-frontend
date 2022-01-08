@@ -6,4 +6,45 @@
     &.medium {
         width: functions.rem(400px);
     }
+
+    &__header-details {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    &__title-wrapper {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .img {
+        height: 100%;
+        width: 100%;
+        border-radius: 50%;
+    }
+
+    &__date-time-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    &__date, &__time {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+
+        span {
+            margin-left: functions.rem(10px);
+        }
+    }
+
+    &__title {
+        margin-top: functions.rem(20px);
+    }
+
+    &__description {
+        margin-top: functions.rem(10px);
+    }
 }

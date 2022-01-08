@@ -2,14 +2,15 @@
     <div class="placeholder__icon">
         <i class="{{iconClass}}"></i>
     </div>
-    <h2 class="placeholder__title">
+    <h3 class="placeholder__title">
         {{title}}
-    </h2>
+    </h3>
     <p class="placeholder__message">
         {{message}}
     </p>
     <button mat-raised-button
             color="primary"
+            class="placeholder__button"
             (click)="clickEvent.emit()">
         {{buttonText}}
     </button>

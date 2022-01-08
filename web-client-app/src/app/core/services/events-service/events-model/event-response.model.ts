@@ -1,4 +1,4 @@
-export interface EventsResponseModel {
+export interface EventResponseModel {
     title: string;
     description: string;
     start: string;
