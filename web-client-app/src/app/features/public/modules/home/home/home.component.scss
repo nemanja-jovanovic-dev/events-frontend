@@ -1,9 +1,11 @@
-@import "./src/styles/functions";
+@use "src/styles/variables";
+@use "./src/styles/functions";
 
 p {
-    font-size: rem(20px);
+    font-size: functions.rem(20px);
 }
 
 .container {
-    padding: 2.5rem;
+    padding: 2.5rem 5rem;
+    background: variables.$background;
 }

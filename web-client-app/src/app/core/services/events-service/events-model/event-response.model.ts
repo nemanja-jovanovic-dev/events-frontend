@@ -5,4 +5,8 @@ export interface EventResponseModel {
     end: string;
     categoryId: string;
     locationId: string;
+    createdByOrganizationName: string;
+    createdByOrganizationId: string;
+    date: string;
+    imagePath?: string;
 }

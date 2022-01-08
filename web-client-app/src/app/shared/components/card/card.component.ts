@@ -1,20 +1,22 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {EventResponseModel} from '../../../core/services/events-service/events-model/event-response.model';
+import {ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 
 @Component({
     selector: 'app-card',
     templateUrl: './card.component.html',
-    styleUrls: ['./card.component.scss']
+    styleUrls: ['./card.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class CardComponent implements OnInit {
+export class CardComponent {
 
     @Input() size: string;
-    @Input() event: EventResponseModel;
+    @Input() headerImage: string;
+    @Input() headerTitle: string;
+    @Input() headerSubtitle: string;
+    @Input() date: string;
+    @Input() time: string;
+    @Input() contentTitle: string;
+    @Input() description: string;
+    @Input() buttonText: string;
 
-    constructor() {
-    }
-
-    ngOnInit(): void {
-    }
-
+    @Output() clickEvent = new EventEmitter<void>();
 }
