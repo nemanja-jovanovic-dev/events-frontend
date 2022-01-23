@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component} from '@angular/core';
 import {EventsService} from '../../../../../core/services/events-service/events.service';
 import {MatDialog} from '@angular/material/dialog';
 import {Store} from '@ngrx/store';
@@ -17,5 +17,9 @@ export class HomeComponent {
     loggedUsers$: Observable<LoggedUserResponseModel[]> = this.store.select(loggedUsersSelector);
 
     constructor(private eventsService: EventsService, private dialog: MatDialog, private store: Store<AppState>) {
+    }
+
+    onScrollTo(el: HTMLElement): void {
+        el.scrollIntoView({behavior: 'smooth'});
     }
 }

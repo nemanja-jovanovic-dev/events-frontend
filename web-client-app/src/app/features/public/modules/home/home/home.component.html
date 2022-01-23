@@ -1,7 +1,7 @@
-<app-video-photo-page-cover>
+<app-video-photo-page-cover (clickEvent)="onScrollTo(content)">
 </app-video-photo-page-cover>
 
-<section class="container">
+<section class="container" #content>
     <app-home-content>
     </app-home-content>
 </section>

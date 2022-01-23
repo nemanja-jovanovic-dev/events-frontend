@@ -38,6 +38,10 @@
     }
 
     &__title {
+        font-size: functions.rem(26px);
+        line-height: functions.rem(40px);
+        letter-spacing: functions.rem(.25px);
+        font-weight: 600;
         margin-top: functions.rem(20px);
     }
 
