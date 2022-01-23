@@ -1,16 +1,22 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 
 @Component({
-  selector: 'app-video-photo-page-cover',
-  templateUrl: './video-photo-page-cover.component.html',
-  styleUrls: ['./video-photo-page-cover.component.scss']
+    selector: 'app-video-photo-page-cover',
+    templateUrl: './video-photo-page-cover.component.html',
+    styleUrls: ['./video-photo-page-cover.component.scss']
 })
 export class VideoPhotoPageCoverComponent implements OnInit {
 
-  constructor() {
-  }
+    @Output() clickEvent = new EventEmitter<void>();
 
-  ngOnInit(): void {
-  }
+    constructor() {
+    }
+
+    ngOnInit(): void {
+    }
+
+    onClick(): void {
+        this.clickEvent.emit();
+    }
 
 }

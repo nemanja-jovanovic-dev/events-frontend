@@ -8,13 +8,13 @@
 
     <nav class="header__nav">
 
-        <ng-container *ngIf="true">
+        <ng-container *ngIf="false">
             <a class="header__nav__item" [routerLink]="[PUBLIC_HOME]" routerLinkActive="activated-route">Home</a>
             <a class="header__nav__item" [routerLink]="[PUBLIC_RESERVATIONS]" routerLinkActive="activated-route">Reservations</a>
             <a class="header__nav__item" [routerLink]="[PUBLIC_MAP]" routerLinkActive="activated-route">Map</a>
         </ng-container>
 
-        <ng-container *ngIf="false">
+        <ng-container *ngIf="true">
             <div class="button">
                 <app-button [cssClass]="'primary'" (click)="openUserRegistrationDialog()">Register</app-button>
             </div>

@@ -8,7 +8,20 @@
         <mat-card-title>{{headerTitle}}</mat-card-title>
         <mat-card-subtitle>{{headerSubtitle}}</mat-card-subtitle>
         <div class="card__action-button">
-            <app-dropdown-menu></app-dropdown-menu>
+            <app-dropdown-menu>
+                <button mat-menu-item>
+                    <span>Save</span>
+                </button>
+                <button mat-menu-item>
+                    <span>Share</span>
+                </button>
+                <button mat-menu-item>
+                    <span>Report</span>
+                </button>
+                <button mat-menu-item>
+                    <span>Delete</span>
+                </button>
+            </app-dropdown-menu>
         </div>
     </mat-card-header>
     <img mat-card-image [src]="headerImage" alt="Photo of a Shiba Inu">
@@ -23,9 +36,9 @@
                 <span>{{time}}</span>
             </div>
         </div>
-        <h4 class="card__title">
+        <p class="card__title">
             {{contentTitle}}
-        </h4>
+        </p>
         <p class="card__description">
             {{description}}
         </p>
