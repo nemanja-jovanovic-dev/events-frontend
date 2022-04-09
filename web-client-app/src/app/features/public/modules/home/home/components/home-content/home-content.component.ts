@@ -16,6 +16,7 @@ export class HomeContentComponent implements OnInit {
     ngOnInit(): void {
         this.events = [
             {
+                id: 1,
                 title: 'First event',
                 start: '8:00 PM',
                 end: '1:00 AM',
@@ -28,6 +29,7 @@ export class HomeContentComponent implements OnInit {
                 imagePath: './assets/images/1.jpg'
             },
             {
+                id: 2,
                 title: 'Second event',
                 start: '8:00 PM',
                 end: '1:00 AM',
@@ -40,6 +42,7 @@ export class HomeContentComponent implements OnInit {
                 imagePath: './assets/images/2.jpg'
             },
             {
+                id: 3,
                 title: 'Third event',
                 start: '8:00 PM',
                 end: '1:00 AM',
@@ -52,6 +55,7 @@ export class HomeContentComponent implements OnInit {
                 imagePath: './assets/images/3.jpg'
             },
             {
+                id: 4,
                 title: 'Fourth event',
                 start: '8:00 PM',
                 end: '1:00 AM',
@@ -64,6 +68,7 @@ export class HomeContentComponent implements OnInit {
                 imagePath: './assets/images/4.jpg'
             },
             {
+                id: 5,
                 title: 'Fifth event',
                 start: '8:00 PM',
                 end: '1:00 AM',
@@ -76,6 +81,7 @@ export class HomeContentComponent implements OnInit {
                 imagePath: './assets/images/5.jpg'
             },
             {
+                id: 6,
                 title: 'Sixth event',
                 start: '8:00 PM',
                 end: '1:00 AM',
@@ -88,6 +94,7 @@ export class HomeContentComponent implements OnInit {
                 imagePath: './assets/images/6.jpg'
             },
             {
+                id: 7,
                 title: 'Seventh event',
                 start: '8:00 PM',
                 end: '1:00 AM',
@@ -100,6 +107,7 @@ export class HomeContentComponent implements OnInit {
                 imagePath: './assets/images/7.jpg'
             },
             {
+                id: 8,
                 title: 'Eighth event',
                 start: '8:00 PM',
                 end: '1:00 AM',
@@ -112,6 +120,7 @@ export class HomeContentComponent implements OnInit {
                 imagePath: './assets/images/8.jpg'
             },
             {
+                id: 9,
                 title: 'Ninth event',
                 start: '8:00 PM',
                 end: '1:00 AM',
@@ -124,6 +133,7 @@ export class HomeContentComponent implements OnInit {
                 imagePath: './assets/images/9.jpg'
             },
             {
+                id: 10,
                 title: 'Tenth event',
                 start: '8:00 PM',
                 end: '1:00 AM',
@@ -136,6 +146,7 @@ export class HomeContentComponent implements OnInit {
                 imagePath: './assets/images/10.jpg'
             },
             {
+                id: 11,
                 title: 'Eleventh event',
                 start: '8:00 PM',
                 end: '1:00 AM',

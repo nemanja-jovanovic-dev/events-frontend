@@ -1,4 +1,6 @@
 import {ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Router} from '@angular/router';
+import {EVENT} from '../../../core/util/routes';
 
 @Component({
     selector: 'app-card',
@@ -17,6 +19,16 @@ export class CardComponent {
     @Input() contentTitle: string;
     @Input() description: string;
     @Input() buttonText: string;
+    @Input() eventId: number;
 
     @Output() clickEvent = new EventEmitter<void>();
+
+    // @Output() cardClickEvent = new EventEmitter<number>();
+
+    constructor(private router: Router) {
+    }
+
+    onCardClick(): void {
+        this.router.navigate([EVENT(this.eventId)]);
+    }
 }

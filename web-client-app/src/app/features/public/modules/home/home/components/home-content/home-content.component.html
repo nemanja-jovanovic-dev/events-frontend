@@ -4,6 +4,7 @@
     <div class="content__main">
         <ng-container *ngFor="let event of events">
             <app-card [size]="'medium'"
+                      [eventId]="event.id"
                       [buttonText]="'Reserve'"
                       [contentTitle]="event.title"
                       [date]="event.date"

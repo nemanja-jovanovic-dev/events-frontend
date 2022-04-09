@@ -1,4 +1,5 @@
-<mat-card class="card {{size}}">
+<mat-card class="card {{size}}"
+          (click)="onCardClick()">
     <mat-card-header>
         <div mat-card-avatar class="example-header-image">
             <img class="img" [src]="headerImage"

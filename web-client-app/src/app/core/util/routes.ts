@@ -6,3 +6,5 @@ export const PUBLIC_RESERVATIONS = PUBLIC_ROUTE + '/reservations';
 
 export const PUBLIC_MAP = PUBLIC_ROUTE + '/map';
 
+export const EVENT = (id: number) => PUBLIC_HOME + `/${id}`;
+
