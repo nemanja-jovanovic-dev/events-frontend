@@ -15,4 +15,8 @@ export class ConfirmRegistrationRestService {
     createUser(token: any): Observable<any> {
         return this.http.post<any>(this.apiBaseUrl, token);
     }
+
+    getTestInfo(): Observable<any> {
+        return this.http.get<any>('http://localhost:3000/test')
+    }
 }

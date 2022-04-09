@@ -33,26 +33,26 @@ export class CoreEffects {
         )
     );
 
-    finishRegistrationWithToken$ = createEffect(() => this.actions$
-        .pipe(
-            ofType(fromActions.userFinishRegistrationWithToken),
-            exhaustMap(action => {
-                return this.confirmRegistrationRestService.createUser(action.token)
-                    .pipe(
-                        map((confirmedUser: ConfirmedUserResponseModel) => {
-                            return fromActions.userFinishRegistrationWithTokenSuccess({confirmedUser});
-                        }),
-                        catchError((confirmedUserError) => {
-                            console.error('Server status: ', confirmedUserError.status);
-                            this.store.dispatch(fromActions.userFinishRegistrationWithTokenFailed({
-                                errorMessage: confirmedUserError.error
-                            }));
-                            return of(null);
-                        })
-                    );
-            })
-        )
-    );
+    // finishRegistrationWithToken$ = createEffect(() => this.actions$
+    //     .pipe(
+    //         ofType(fromActions.userFinishRegistrationWithToken),
+    //         exhaustMap(action => {
+    //             return this.confirmRegistrationRestService.createUser(action.token)
+    //                 .pipe(
+    //                     map((confirmedUser: ConfirmedUserResponseModel) => {
+    //                         return fromActions.userFinishRegistrationWithTokenSuccess({confirmedUser});
+    //                     }),
+    //                     catchError((confirmedUserError) => {
+    //                         console.error('Server status: ', confirmedUserError.status);
+    //                         this.store.dispatch(fromActions.userFinishRegistrationWithTokenFailed({
+    //                             errorMessage: confirmedUserError.error
+    //                         }));
+    //                         return of(null);
+    //                     })
+    //                 );
+    //         })
+    //     )
+    // );
 
     constructor(private actions$: Actions,
                 private loggedUserService: LoggedUserService,

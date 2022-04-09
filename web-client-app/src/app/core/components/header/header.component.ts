@@ -30,4 +30,8 @@ export class HeaderComponent {
     openUserLoginDialog(): void {
         this.dialog.open(LoginComponent, {disableClose: true});
     }
+
+    onSelectFile(file: File[]): void {
+        console.log('selected file: ', file[0]);
+    }
 }
