@@ -1,32 +1,30 @@
-import {Injectable} from '@angular/core';
-import {Actions, createEffect, ofType} from '@ngrx/effects';
+import { Injectable } from '@angular/core';
+import { Actions, createEffect, ofType } from '@ngrx/effects';
 import * as fromActions from './core.actions';
-import {catchError, exhaustMap, map} from 'rxjs/operators';
-import {LoggedUserService} from '../core/services/logged-user-service/logged-user.service';
-import {LoggedUserResponseModel} from '../core/services/logged-user-service/logged-user-model/logged-user-response.model';
-import {Observable, of} from 'rxjs';
-import {Store} from '@ngrx/store';
-import {AppState} from './index';
-import {loggedUsersSelector} from './core.reducer';
-import {RegistrationRestService} from '../core/services/registration-rest-service/registration-rest.service';
-import {UserRegistrationRequestModel} from '../core/services/registration-rest-service/model/user-registration-request.model';
-import {ConfirmRegistrationRestService} from '../core/services/confirm-registration-service/confirm-registration-rest.service';
-import {ConfirmedUserResponseModel} from '../core/services/confirm-registration-service/model/confirmed-user-response.model';
-
+import { catchError, exhaustMap, map } from 'rxjs/operators';
+import { LoggedUserService } from '../core/services/logged-user-service/logged-user.service';
+import { LoggedUserResponseModel } from '../core/services/logged-user-service/logged-user-model/logged-user-response.model';
+import { Observable, of } from 'rxjs';
+import { Store } from '@ngrx/store';
+import { AppState } from './index';
+import { RegistrationRestService } from '../core/services/registration-rest-service/registration-rest.service';
+import { UserRegistrationRequestModel } from '../core/services/registration-rest-service/model/user-registration-request.model';
+import { ConfirmRegistrationRestService } from '../core/services/confirm-registration-service/confirm-registration-rest.service';
+import { ConfirmedUserResponseModel } from '../core/services/confirm-registration-service/model/confirmed-user-response.model';
 
 @Injectable()
 export class CoreEffects {
-
-    listOfUsers$: Observable<LoggedUserResponseModel[]> = this.store.select(loggedUsersSelector);
-
-    registerUnconfirmedUser$ = createEffect(() => this.actions$
-        .pipe(
+    registerUnconfirmedUser$ = createEffect(() =>
+        this.actions$.pipe(
             ofType(fromActions.userRegistration),
-            exhaustMap(action => {
-                return this.registrationRestService.createUnconfirmedUser(action.user)
+            exhaustMap((action) => {
+                return this.registrationRestService
+                    .createUnconfirmedUser(action.user)
                     .pipe(
                         map((unconfirmedUser: UserRegistrationRequestModel) => {
-                            return fromActions.userRegistrationSuccess({user: unconfirmedUser});
+                            return fromActions.userRegistrationSuccess({
+                                user: unconfirmedUser,
+                            });
                         })
                     );
             })
@@ -54,10 +52,11 @@ export class CoreEffects {
     //     )
     // );
 
-    constructor(private actions$: Actions,
-                private loggedUserService: LoggedUserService,
-                private store: Store<AppState>,
-                private registrationRestService: RegistrationRestService,
-                private confirmRegistrationRestService: ConfirmRegistrationRestService) {
-    }
+    constructor(
+        private actions$: Actions,
+        private loggedUserService: LoggedUserService,
+        private store: Store<AppState>,
+        private registrationRestService: RegistrationRestService,
+        private confirmRegistrationRestService: ConfirmRegistrationRestService
+    ) {}
 }

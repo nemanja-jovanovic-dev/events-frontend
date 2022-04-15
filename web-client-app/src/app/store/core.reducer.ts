@@ -1,34 +1,26 @@
-import {Action, createFeatureSelector, createReducer, createSelector, on} from '@ngrx/store';
+import {
+    Action,
+    createFeatureSelector,
+    createReducer,
+    createSelector,
+    on,
+} from '@ngrx/store';
+import { LoggedUserResponseModel } from '../core/services/logged-user-service/logged-user-model/logged-user-response.model';
 import * as CoreAction from './core.actions';
-import {LoggedUserResponseModel} from '../core/services/logged-user-service/logged-user-model/logged-user-response.model';
-import {UserResponseModel} from '../core/services/registration-rest-service/model/user-response.model';
-import {ConfirmedUserResponseModel} from '../core/services/confirm-registration-service/model/confirmed-user-response.model';
-
-
 export const coreFeatureKey = 'core';
 
 const stateSelector = createFeatureSelector<State>(coreFeatureKey);
-export const loggedUsersSelector = createSelector(stateSelector, (state: State) => state.loggedUsers);
-export const confirmedUserSelector = createSelector(stateSelector, (state: State) => state.confirmedUserDetails);
-export const loadingSelector = createSelector(stateSelector, (state: State) => state.loading);
-export const errorMessageSelector = createSelector(stateSelector, (state: State) => state.error);
+export const loggedUserSelector = createSelector(
+    stateSelector,
+    (state: State) => state.loggedUserInfo
+);
 
 export interface State {
-    loading: boolean;
-    message: string;
-    loggedUsers: LoggedUserResponseModel[];
-    unconfirmedUser: UserResponseModel;
-    confirmedUserDetails: ConfirmedUserResponseModel;
-    error: string;
+    loggedUserInfo: LoggedUserResponseModel[];
 }
 
 export const initialState: State = {
-    loading: true,
-    message: null,
-    loggedUsers: [],
-    unconfirmedUser: null,
-    confirmedUserDetails: null,
-    error: null
+    loggedUserInfo: null,
 };
 
 export const reducer = createReducer(
@@ -38,35 +30,41 @@ export const reducer = createReducer(
         return {
             ...state,
             loading: false,
-            message: 'This is new message from reducer!'
+            message: 'This is new message from reducer!',
         };
     }),
-    on(CoreAction.getUsersSuccess, (state: State, {payload}) => {
+    on(CoreAction.getUsersSuccess, (state: State, { payload }) => {
         return {
             ...state,
             loading: false,
-            loggedUsers: [payload]
+            loggedUsers: [payload],
         };
     }),
-    on(CoreAction.userRegistrationSuccess, (state: State, {user}) => {
+    on(CoreAction.userRegistrationSuccess, (state: State, { user }) => {
         return {
             ...state,
             loading: false,
-            unconfirmedUser: user
+            unconfirmedUser: user,
         };
     }),
-    on(CoreAction.userFinishRegistrationWithTokenSuccess, (state: State, {confirmedUser}) => {
-        return {
-            ...state,
-            loading: false,
-            confirmedUserDetails: confirmedUser
-        };
-    }),
-    on(CoreAction.userFinishRegistrationWithTokenFailed, (state: State, {errorMessage}) => {
-        return {
-            ...state,
-            loading: false,
-            error: errorMessage
-        };
-    }),
+    on(
+        CoreAction.userFinishRegistrationWithTokenSuccess,
+        (state: State, { confirmedUser }) => {
+            return {
+                ...state,
+                loading: false,
+                confirmedUserDetails: confirmedUser,
+            };
+        }
+    ),
+    on(
+        CoreAction.userFinishRegistrationWithTokenFailed,
+        (state: State, { errorMessage }) => {
+            return {
+                ...state,
+                loading: false,
+                error: errorMessage,
+            };
+        }
+    )
 );

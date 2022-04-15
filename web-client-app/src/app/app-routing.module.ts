@@ -12,6 +12,7 @@ const routes: Routes = [
     path: 's',
     loadChildren: () => import('./features/secured/secured.module').then(m => m.SecuredModule)
   },
+  { path: 'event', loadChildren: () => import('./core/components/event/event/event.module').then(m => m.EventModule) },
   {
     path: '**',
     component: FourOFourPageComponent
