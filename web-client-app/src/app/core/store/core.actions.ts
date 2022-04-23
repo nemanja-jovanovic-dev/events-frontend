@@ -1,44 +1,17 @@
 import {createAction, props} from '@ngrx/store';
-import {LoggedUserResponseModel} from '../core/services/logged-user-service/logged-user-model/logged-user-response.model';
-import {UserRegistrationRequestModel} from '../core/services/registration-rest-service/model/user-registration-request.model';
-import {ConfirmedUserResponseModel} from '../core/services/confirm-registration-service/model/confirmed-user-response.model';
-
-export const loadCores = createAction(
-    '[Core] Load Cores'
-);
-
-export const loadCoresSuccess = createAction(
-    '[Core] Load Cores Success',
-    props<{ data: any }>()
-);
-
-export const loadCoresFailure = createAction(
-    '[Core] Load Cores Failure',
-    props<{ error: any }>()
-);
+import {LoggedUserResponseModel} from '../services/logged-user-service/logged-user-model/logged-user-response.model';
+import {UserRegistrationRequestModel} from '../services/registration-rest-service/model/user-registration-request.model';
+import {ConfirmedUserResponseModel} from '../services/confirm-registration-service/model/confirmed-user-response.model';
+import {UserCredentialsRequestModel} from '../services/auth-service/model/user-credentials-request.model';
 
 export const showMessage = createAction(
     '[Core] Show Message',
     props<{ message: string }>()
 );
 
-export const getUsers = createAction(
-    '[Core] Get Users',
-);
-
 export const getUsersSuccess = createAction(
     '[Core] Get Users Success',
     props<{ payload: LoggedUserResponseModel }>()
-);
-
-export const logIn = createAction(
-    '[Core] Log In',
-    props<{ userId: number }>()
-);
-
-export const logInSuccess = createAction(
-    '[Core] Log In Success',
-    props<{ user: LoggedUserResponseModel }>()
 );
 
 export const userRegistration = createAction(
@@ -64,4 +37,19 @@ export const userFinishRegistrationWithTokenSuccess = createAction(
 export const userFinishRegistrationWithTokenFailed = createAction(
     '[Core] User Registration Finished With Token Failed',
     props<{ errorMessage: string }>()
+);
+
+export const userLogin = createAction(
+    '[Core] User login',
+    props<{ userCredentials: UserCredentialsRequestModel }>()
+);
+
+export const userLoginSuccess = createAction(
+    '[Core] User login success',
+    props<{ token: string }>()
+);
+
+export const userLoginFailed = createAction(
+    '[Core] User login failed',
+    props<{ message: string }>()
 );

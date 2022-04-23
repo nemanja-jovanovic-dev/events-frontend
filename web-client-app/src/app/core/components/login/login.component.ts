@@ -1,20 +1,24 @@
-import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { MatDialog } from '@angular/material/dialog';
-import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs';
-import { AppState } from '../../../store';
-import { CredentialsVerificationRestService } from '../../services/credentials-verification-service/credentials-verification-rest.service';
-import { CredentialsVerificationRequestModel } from '../../services/credentials-verification-service/model/credentials-verification-request.model';
-import { LoggedUserResponseModel } from '../../services/logged-user-service/logged-user-model/logged-user-response.model';
+import {Component, OnInit} from '@angular/core';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {MatDialog} from '@angular/material/dialog';
+import {Store} from '@ngrx/store';
+import {AppState} from '../../store';
+import {CredentialsVerificationRestService} from '../../services/auth-service/credentials-verification-rest.service';
+import {LoggedUserResponseModel} from '../../services/logged-user-service/logged-user-model/logged-user-response.model';
+import * as fromActions from '../../store/core.actions';
+import * as fromReducer from '../../store/core.reducer';
+import {UserCredentialsRequestModel} from '../../services/auth-service/model/user-credentials-request.model';
+import {Observable} from 'rxjs';
 
 @Component({
     selector: 'app-login',
     templateUrl: './login.component.html',
-    styleUrls: ['./login.component.scss'],
+    styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
     user: LoggedUserResponseModel;
+
+    loggedUserToken$: Observable<string> = this.store.select(fromReducer.loggedUserTokenSelector);
 
     form: FormGroup;
     username = new FormControl('', Validators.required);
@@ -22,9 +26,9 @@ export class LoginComponent implements OnInit {
 
     constructor(
         private store: Store<AppState>,
-        private dialog: MatDialog,
-        private credentialsVerificationRestService: CredentialsVerificationRestService
-    ) {}
+        private dialog: MatDialog
+    ) {
+    }
 
     ngOnInit(): void {
         this.form = new FormGroup({
@@ -34,19 +38,10 @@ export class LoginComponent implements OnInit {
     }
 
     onSubmit(): void {
-        if (this.form.invalid) {
-            console.log('Invalid form');
-        } else {
-            const userCredentials: CredentialsVerificationRequestModel = {
-                email: this.username.value,
-                password: this.password.value,
-            };
-            this.credentialsVerificationRestService
-                .userLogin(userCredentials)
-                .subscribe((value) =>
-                    console.log('credentiaals subscribe: ', value)
-                );
-        }
+        const userCredentials: UserCredentialsRequestModel = {
+            ...this.form.value
+        };
+        this.store.dispatch(fromActions.userLogin({userCredentials: userCredentials}));
     }
 
     onClose(): void {
