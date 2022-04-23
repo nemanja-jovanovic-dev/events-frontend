@@ -1,8 +1,9 @@
-import {UserRoleTypeEnum} from '../../../components/registration/registration.component';
+import { UserRoleTypeEnum } from '../../../components/registration/registration.component';
 
 export interface UserResponseModel {
-  firstName: string;
-  lastName: string;
-  email: string;
-  role: UserRoleTypeEnum;
+    id: string;
+    firstName: string;
+    lastName: string;
+    email: string;
+    role: UserRoleTypeEnum;
 }

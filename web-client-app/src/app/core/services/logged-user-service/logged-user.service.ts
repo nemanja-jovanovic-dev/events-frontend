@@ -1,23 +1,23 @@
-import {Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
-import {LoggedUserResponseModel} from './logged-user-model/logged-user-response.model';
-import {Observable} from 'rxjs';
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { LoggedUserResponseModel } from './logged-user-model/logged-user-response.model';
+import { Observable } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root',
 })
 export class LoggedUserService {
+    controllerUrl = 'http://localhost:3000/users';
 
-  controllerUrl = 'http://localhost:3000/users';
+    constructor(private httpClient: HttpClient) {}
 
-  constructor(private httpClient: HttpClient) {
-  }
+    getUsers(): Observable<LoggedUserResponseModel> {
+        return this.httpClient.get<LoggedUserResponseModel>(this.controllerUrl);
+    }
 
-  getUsers(): Observable<LoggedUserResponseModel> {
-    return this.httpClient.get<LoggedUserResponseModel>(this.controllerUrl);
-  }
-
-  getUser(id: number): Observable<LoggedUserResponseModel> {
-    return this.httpClient.get<LoggedUserResponseModel>(this.controllerUrl + `/${id}`);
-  }
+    getUser(id: number): Observable<LoggedUserResponseModel> {
+        return this.httpClient.get<LoggedUserResponseModel>(
+            this.controllerUrl + `/${id}`
+        );
+    }
 }

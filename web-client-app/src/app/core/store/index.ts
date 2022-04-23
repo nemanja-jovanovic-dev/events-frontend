@@ -1,16 +1,16 @@
 import {ActionReducerMap, MetaReducer} from '@ngrx/store';
-import {environment} from '../../environments/environment';
+import {environment} from '../../../environments/environment';
 import * as fromCore from './core.reducer';
 
 
 export interface AppState {
 
-  [fromCore.coreFeatureKey]: fromCore.State;
+    [fromCore.coreFeatureKey]: fromCore.State;
 }
 
 export const reducers: ActionReducerMap<AppState> = {
 
-  [fromCore.coreFeatureKey]: fromCore.reducer,
+    [fromCore.coreFeatureKey]: fromCore.reducer,
 };
 
 
