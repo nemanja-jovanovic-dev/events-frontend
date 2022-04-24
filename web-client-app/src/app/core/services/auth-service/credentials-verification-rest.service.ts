@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {CredentialsVerificationRequestModel} from './model/credentials-verification-request.model';
 import {CredentialsVerificationResponseModel} from './model/credentials-verification-response.model';
@@ -22,7 +22,12 @@ export class CredentialsVerificationRestService {
         return this.http.post<CredentialsVerificationResponseModel>(`${this.apiBaseUrl}/register/confirm`, token);
     }
 
-    userLogin(userCredentials: UserCredentialsRequestModel): Observable<string> {
-        return this.http.post<string>(`${this.apiBaseUrl}/login`, userCredentials);
+    userLogin(userCredentials: UserCredentialsRequestModel): Observable<any> {
+        const headers = new HttpHeaders().set('Content-Type', 'text/plain; charset=utf-8');
+
+        return this.http.post(
+            `${this.apiBaseUrl}/login`,
+            userCredentials,
+            {responseType: 'text'});
     }
 }
