@@ -18,16 +18,11 @@ import {Observable} from 'rxjs';
 export class LoginComponent implements OnInit {
     user: LoggedUserResponseModel;
 
-    loggedUserToken$: Observable<string> = this.store.select(fromReducer.loggedUserTokenSelector);
-
     form: FormGroup;
     emailFormControl = new FormControl('', Validators.required);
     passwordFormControl = new FormControl('', Validators.required);
 
-    constructor(
-        private store: Store<AppState>,
-        private dialog: MatDialog
-    ) {
+    constructor(private store: Store<AppState>, private dialog: MatDialog) {
     }
 
     ngOnInit(): void {

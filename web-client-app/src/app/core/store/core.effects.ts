@@ -8,6 +8,7 @@ import {AppState} from './index';
 import {CredentialsVerificationRestService} from '../services/auth-service/credentials-verification-rest.service';
 import {Router} from '@angular/router';
 import {SECURED_ROUTE} from '../util/routes';
+import {MatDialog} from '@angular/material/dialog';
 
 @Injectable()
 export class CoreEffects {
@@ -40,6 +41,7 @@ export class CoreEffects {
                 return this.credentialsVerificationRestService.userLogin(action.userCredentials).pipe(
                     map((response) => {
                         this.router.navigate([SECURED_ROUTE]);
+                        this.matDialog.closeAll();
                         return fromActions.userLoginSuccess({token: response});
                     }),
                     catchError((error) => {
@@ -56,7 +58,8 @@ export class CoreEffects {
         private loggedUserService: LoggedUserService,
         private store: Store<AppState>,
         private credentialsVerificationRestService: CredentialsVerificationRestService,
-        private router: Router
+        private router: Router,
+        private matDialog: MatDialog
     ) {
     }
 }
