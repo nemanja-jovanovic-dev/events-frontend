@@ -5,6 +5,7 @@ import * as CoreActions from '../../store/core.actions';
 import {Store} from '@ngrx/store';
 import {AppState} from '../../store';
 import {UserRegistrationRequestModel} from '../../services/registration-rest-service/model/user-registration-request.model';
+import { CredentialsVerificationRequestModel } from '../../services/auth-service/model/credentials-verification-request.model';
 
 export enum UserRoleTypeEnum {
     GUEST = 'GUEST',
@@ -60,7 +61,7 @@ export class RegistrationComponent implements OnInit {
             return;
         }
 
-        const user: UserRegistrationRequestModel = {
+        const user: CredentialsVerificationRequestModel = {
             email: this.emailFormControl.value,
             firstName: this.firstNameFormControl.value,
             lastName: this.lastNameFormControl.value,

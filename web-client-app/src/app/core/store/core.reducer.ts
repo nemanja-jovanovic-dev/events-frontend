@@ -14,6 +14,8 @@ const stateSelector = createFeatureSelector<State>(coreFeatureKey);
 
 export const loggedUserSelector = createSelector(stateSelector, (state: State) => state.loggedUserInfo);
 export const loggedUserTokenSelector = createSelector(stateSelector, (state: State) => state.token);
+export const isUserLoggedIn = createSelector(stateSelector, (state: State) => !!state.token);
+export const userToken = createSelector(stateSelector, (state: State) => state.token);
 
 export interface State {
     loggedUserInfo: LoggedUserResponseModel[];

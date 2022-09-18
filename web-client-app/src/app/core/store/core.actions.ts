@@ -3,6 +3,8 @@ import {LoggedUserResponseModel} from '../services/logged-user-service/logged-us
 import {UserRegistrationRequestModel} from '../services/registration-rest-service/model/user-registration-request.model';
 import {ConfirmedUserResponseModel} from '../services/confirm-registration-service/model/confirmed-user-response.model';
 import {UserCredentialsRequestModel} from '../services/auth-service/model/user-credentials-request.model';
+import { CredentialsVerificationRequestModel } from '../services/auth-service/model/credentials-verification-request.model';
+import { CredentialsVerificationResponseModel } from '../services/auth-service/model/credentials-verification-response.model';
 
 export const showMessage = createAction(
     '[Core] Show Message',
@@ -16,12 +18,12 @@ export const getUsersSuccess = createAction(
 
 export const userRegistration = createAction(
     '[Core] User Registration',
-    props<{ user: UserRegistrationRequestModel }>()
+    props<{ user: CredentialsVerificationRequestModel }>()
 );
 
 export const userRegistrationSuccess = createAction(
     '[Core] User Registration Success',
-    props<{ user: UserRegistrationRequestModel }>()
+    props<{ user: CredentialsVerificationResponseModel }>()
 );
 
 export const userFinishRegistrationWithToken = createAction(

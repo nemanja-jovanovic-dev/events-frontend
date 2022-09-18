@@ -8,3 +8,5 @@ export const PUBLIC_MAP = PUBLIC_ROUTE + '/map';
 
 export const EVENT = (id: number) => PUBLIC_HOME + `/${id}`;
 
+export const SECURED_ROUTE = '/s';
+
