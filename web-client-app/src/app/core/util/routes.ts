@@ -6,7 +6,7 @@ export const PUBLIC_RESERVATIONS = PUBLIC_ROUTE + '/reservations';
 
 export const PUBLIC_MAP = PUBLIC_ROUTE + '/map';
 
-export const EVENT = (id: number) => PUBLIC_HOME + `/${id}`;
+export const EVENT = (id: number) => PUBLIC_ROUTE + `/event/${id}`;
 
 export const SECURED_ROUTE = '/s';
 

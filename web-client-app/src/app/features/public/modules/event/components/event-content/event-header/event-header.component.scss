@@ -1,0 +1,30 @@
+@use "src/styles/functions";
+@use "src/styles/mixins";
+@use "src/styles/variables";
+
+.header {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: functions.rem(480px);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+
+    &__overlay {
+        height: 100%;
+        width: 100%;
+        background: rgba($color: variables.$black, $alpha: .5);
+        position: absolute;
+    }
+
+    &__title {
+        font-size: functions.rem(48px);
+        line-height: 1;
+        font-weight: 500;
+        color: variables.$white;
+        z-index: 1;
+    }
+}
