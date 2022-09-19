@@ -18,26 +18,27 @@ import { CredentialsVerificationResponseModel } from '../services/auth-service/m
 @Injectable()
 export class CoreEffects {
 
-    // finishRegistrationWithToken$ = createEffect(() => this.actions$
-    //     .pipe(
-    //         ofType(fromActions.userFinishRegistrationWithToken),
-    //         exhaustMap(action => {
-    //             return this.confirmRegistrationRestService.createUser(action.token)
-    //                 .pipe(
-    //                     map((confirmedUser: ConfirmedUserResponseModel) => {
-    //                         return fromActions.userFinishRegistrationWithTokenSuccess({confirmedUser});
-    //                     }),
-    //                     catchError((confirmedUserError) => {
-    //                         console.error('Server status: ', confirmedUserError.status);
-    //                         this.store.dispatch(fromActions.userFinishRegistrationWithTokenFailed({
-    //                             errorMessage: confirmedUserError.error
-    //                         }));
-    //                         return of(null);
-    //                     })
-    //                 );
-    //         })
-    //     )
-    // );
+    constructor(
+        private actions$: Actions,
+        private credentialsVerificationRestService: CredentialsVerificationRestService,
+        private router: Router,
+        private matDialog: MatDialog
+    ) {
+    }
+
+    finishRegistrationWithToken$ = createEffect(() => this.actions$
+        .pipe(
+            ofType(fromActions.userFinishRegistrationWithToken),
+            exhaustMap(action => {
+                return this.credentialsVerificationRestService.confirmUserRegistration(action.token)
+                    .pipe(
+                        map((confirmedUser: ConfirmedUserResponseModel) => {
+                            return fromActions.userFinishRegistrationWithTokenSuccess({confirmedUser});
+                        })
+                    );
+            })
+        )
+    );
 
     userLogin$ = createEffect(() => this.actions$
         .pipe(
@@ -75,14 +76,4 @@ export class CoreEffects {
                 })
             )
     )
-
-    constructor(
-        private actions$: Actions,
-        private loggedUserService: LoggedUserService,
-        private store: Store<AppState>,
-        private credentialsVerificationRestService: CredentialsVerificationRestService,
-        private router: Router,
-        private matDialog: MatDialog
-    ) {
-    }
 }
