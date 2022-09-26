@@ -23,8 +23,8 @@ export class CredentialsVerificationRestService {
     }
 
     userLogin(userCredentials: UserCredentialsRequestModel): Observable<any> {
-        const headers = new HttpHeaders().set('Content-Type', 'text/plain; charset=utf-8');
+        // const headers = new HttpHeaders().set('Content-Type', 'text/plain; charset=utf-8');
 
-        return this.http.post(`${this.apiBaseUrl}/login`,userCredentials, {responseType: 'text'});
+        return this.http.post(`${this.apiBaseUrl}/login`,userCredentials);
     }
 }

@@ -40,5 +40,7 @@ export class HomeComponent implements OnInit {
         //
         // tslint:disable-next-line:max-line-length
         // this.credentialsVerificationRestService.userRegistration(credentials).subscribe(value => console.log('Credentials registration value: ', value));
+
+        this.eventsService.category().subscribe((value) => console.log(value));
     }
 }

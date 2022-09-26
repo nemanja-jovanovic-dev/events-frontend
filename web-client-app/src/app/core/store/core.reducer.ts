@@ -5,7 +5,7 @@ import {
     createSelector,
     on,
 } from '@ngrx/store';
-import {LoggedUserResponseModel} from '../services/logged-user-service/logged-user-model/logged-user-response.model';
+import { CredentialsVerificationResponseModel } from '../services/auth-service/model/credentials-verification-response.model';
 import * as CoreAction from './core.actions';
 
 export const coreFeatureKey = 'core';
@@ -18,7 +18,7 @@ export const isUserLoggedIn = createSelector(stateSelector, (state: State) => !!
 export const userToken = createSelector(stateSelector, (state: State) => state.token);
 
 export interface State {
-    loggedUserInfo: LoggedUserResponseModel[];
+    loggedUserInfo: CredentialsVerificationResponseModel;
     token: string;
 }
 
@@ -71,10 +71,11 @@ export const reducer = createReducer(
                 };
             }
         ),
-        on(CoreAction.userLoginSuccess, (state: State, {token}) => {
+        on(CoreAction.userLoginSuccess, (state: State, action) => {
             return {
                 ...state,
-                token: token
+                token: action.loggedUser.token,
+                loggedUserInfo: action.loggedUser.loggedUser
             };
         })
     )

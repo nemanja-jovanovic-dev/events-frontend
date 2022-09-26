@@ -15,6 +15,10 @@ const routes: Routes = [
         loadChildren: () => import('./features/secured/secured.module').then(m => m.SecuredModule)
     },
     {
+        path: ':token',
+        component: FourOFourPageComponent
+    },
+    {
         path: '**',
         component: FourOFourPageComponent
     }
