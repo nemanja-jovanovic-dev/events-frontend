@@ -16,8 +16,6 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatDialogModule} from '@angular/material/dialog';
 import { FourOFourPageComponent } from './components/four-o-four-page/four-o-four-page.component';
 import { FourOFourPageContentComponent } from './components/four-o-four-page/four-o-four-page-content/four-o-four-page-content.component';
-import { EventComponent } from './components/event/event.component';
-
 
 
 @NgModule({
@@ -27,7 +25,6 @@ import { EventComponent } from './components/event/event.component';
     MainComponent,
     FourOFourPageComponent,
     FourOFourPageContentComponent,
-    EventComponent
   ],
   imports: [
     CommonModule,

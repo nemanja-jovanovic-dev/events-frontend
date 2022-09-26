@@ -5,6 +5,7 @@ import {ConfirmedUserResponseModel} from '../services/confirm-registration-servi
 import {UserCredentialsRequestModel} from '../services/auth-service/model/user-credentials-request.model';
 import { CredentialsVerificationRequestModel } from '../services/auth-service/model/credentials-verification-request.model';
 import { CredentialsVerificationResponseModel } from '../services/auth-service/model/credentials-verification-response.model';
+import { LoggedUserWithTokenResponseModel } from '../services/auth-service/model/logged-user-response.model';
 
 export const showMessage = createAction(
     '[Core] Show Message',
@@ -48,7 +49,7 @@ export const userLogin = createAction(
 
 export const userLoginSuccess = createAction(
     '[Core] User login success',
-    props<{ token: string }>()
+    props<{ loggedUser: LoggedUserWithTokenResponseModel }>()
 );
 
 export const userLoginFailed = createAction(

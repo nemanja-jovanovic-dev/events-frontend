@@ -26,11 +26,14 @@ export class FourOFourPageComponent implements OnInit {
     ngOnInit(): void {
         this.route.url.pipe(take(1)).subscribe((urlParams) =>
             urlParams.map((param) =>
+            {
+                console.log('param: ', param);
+
                 this.store.dispatch(
                     fromActions.userFinishRegistrationWithToken({
                         token: param.path,
                     })
-                )
+                )}
             )
         );
     }

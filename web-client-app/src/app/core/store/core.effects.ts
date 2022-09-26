@@ -14,40 +14,43 @@ import {Router} from '@angular/router';
 import {SECURED_ROUTE} from '../util/routes';
 import {MatDialog} from '@angular/material/dialog';
 import { CredentialsVerificationResponseModel } from '../services/auth-service/model/credentials-verification-response.model';
+import { LoggedUserResponseModel } from '../services/logged-user-service/logged-user-model/logged-user-response.model';
+import { LoggedUserWithTokenResponseModel } from '../services/auth-service/model/logged-user-response.model';
 
 @Injectable()
 export class CoreEffects {
 
-    // finishRegistrationWithToken$ = createEffect(() => this.actions$
-    //     .pipe(
-    //         ofType(fromActions.userFinishRegistrationWithToken),
-    //         exhaustMap(action => {
-    //             return this.confirmRegistrationRestService.createUser(action.token)
-    //                 .pipe(
-    //                     map((confirmedUser: ConfirmedUserResponseModel) => {
-    //                         return fromActions.userFinishRegistrationWithTokenSuccess({confirmedUser});
-    //                     }),
-    //                     catchError((confirmedUserError) => {
-    //                         console.error('Server status: ', confirmedUserError.status);
-    //                         this.store.dispatch(fromActions.userFinishRegistrationWithTokenFailed({
-    //                             errorMessage: confirmedUserError.error
-    //                         }));
-    //                         return of(null);
-    //                     })
-    //                 );
-    //         })
-    //     )
-    // );
+    constructor(
+        private actions$: Actions,
+        private credentialsVerificationRestService: CredentialsVerificationRestService,
+        private router: Router,
+        private matDialog: MatDialog
+    ) {
+    }
+
+    finishRegistrationWithToken$ = createEffect(() => this.actions$
+        .pipe(
+            ofType(fromActions.userFinishRegistrationWithToken),
+            exhaustMap(action => {
+                return this.credentialsVerificationRestService.confirmUserRegistration(action.token)
+                    .pipe(
+                        map((confirmedUser: ConfirmedUserResponseModel) => {
+                            return fromActions.userFinishRegistrationWithTokenSuccess({confirmedUser});
+                        })
+                    );
+            })
+        )
+    );
 
     userLogin$ = createEffect(() => this.actions$
         .pipe(
             ofType(fromActions.userLogin),
             exhaustMap(action => {
                 return this.credentialsVerificationRestService.userLogin(action.userCredentials).pipe(
-                    map((response) => {
+                    map((loggedUser: LoggedUserWithTokenResponseModel) => {
                         this.router.navigate([SECURED_ROUTE]);
                         this.matDialog.closeAll();
-                        return fromActions.userLoginSuccess({token: response});
+                        return fromActions.userLoginSuccess({loggedUser: loggedUser});
                     }),
                     catchError((error) => {
                         console.error('User login error: ', error);
@@ -75,14 +78,4 @@ export class CoreEffects {
                 })
             )
     )
-
-    constructor(
-        private actions$: Actions,
-        private loggedUserService: LoggedUserService,
-        private store: Store<AppState>,
-        private credentialsVerificationRestService: CredentialsVerificationRestService,
-        private router: Router,
-        private matDialog: MatDialog
-    ) {
-    }
 }

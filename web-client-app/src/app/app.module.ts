@@ -5,7 +5,7 @@ import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {StoreDevtoolsModule} from '@ngrx/store-devtools';
 import {environment} from '../environments/environment';
-import {HttpClientModule} from '@angular/common/http';
+import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import {SharedModule} from './shared/shared.module';
 import {HeaderModule} from './core/components/header/header.module';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -14,6 +14,7 @@ import {StoreModule} from '@ngrx/store';
 import {metaReducers, reducers} from './core/store';
 import {EffectsModule} from '@ngrx/effects';
 import {CoreEffects} from './core/store/core.effects';
+import { HttpRequestInterceptor } from './core/interceptors/http-requset-interceptor';
 
 @NgModule({
     declarations: [
@@ -37,7 +38,13 @@ import {CoreEffects} from './core/store/core.effects';
         !environment.production ? StoreDevtoolsModule.instrument() : [],
         EffectsModule.forRoot([CoreEffects]),
     ],
-    providers: [],
+    providers: [
+        {
+            provide: HTTP_INTERCEPTORS,
+            useClass: HttpRequestInterceptor,
+            multi: true
+        }
+    ],
     bootstrap: [AppComponent]
 })
 export class AppModule {

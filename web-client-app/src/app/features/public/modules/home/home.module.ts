@@ -6,16 +6,11 @@ import {HomeComponent} from './home/home.component';
 import {SharedModule} from '../../../../shared/shared.module';
 import {MatButtonModule} from '@angular/material/button';
 import {HomeContentComponent} from './home/components/home-content/home-content.component';
-import {EventComponent} from '../../../../core/components/event/event.component';
 
 const routes: Routes = [
     {
         path: '',
         component: HomeComponent,
-    },
-    {
-        path: ':id',
-        component: EventComponent
     }
 ];
 
