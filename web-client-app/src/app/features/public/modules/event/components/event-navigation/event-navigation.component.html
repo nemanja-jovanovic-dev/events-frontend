@@ -1,0 +1,8 @@
+<nav class="subnav">
+    <a class="subnav__item"
+       [routerLinkActive]="'subnav__item--active'"
+       [routerLink]="[EVENT__OVERVIEW(event.id)]">Overview</a>
+    <a class="subnav__item"
+       [routerLinkActive]="'subnav__item--active'"
+       [routerLink]="[EVENT__PHOTOS(event.id)]">Photos</a>
+</nav>

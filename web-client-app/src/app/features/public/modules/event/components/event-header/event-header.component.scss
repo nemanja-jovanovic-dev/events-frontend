@@ -7,7 +7,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    height: functions.rem(480px);
+    height: functions.rem(300px);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -26,5 +26,10 @@
         font-weight: 500;
         color: variables.$white;
         z-index: 1;
+    }
+
+    &__navigation {
+        width: 80%;
+        margin: 0 auto;
     }
 }

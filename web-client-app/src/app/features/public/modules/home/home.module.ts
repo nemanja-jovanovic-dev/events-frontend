@@ -6,6 +6,7 @@ import {HomeComponent} from './home/home.component';
 import {SharedModule} from '../../../../shared/shared.module';
 import {MatButtonModule} from '@angular/material/button';
 import {HomeContentComponent} from './home/components/home-content/home-content.component';
+import { HeaderModule } from 'src/app/core/components/header/header.module';
 
 const routes: Routes = [
     {
@@ -26,6 +27,7 @@ const routes: Routes = [
         RouterModule.forChild(routes),
         SharedModule,
         MatButtonModule,
+        HeaderModule
     ]
 })
 export class HomeModule {

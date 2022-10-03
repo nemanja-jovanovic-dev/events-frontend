@@ -1,4 +1,5 @@
 @use "functions";
+@use 'variables';
 
 * {
     margin: 0;
@@ -41,4 +42,9 @@ h4 {
     line-height: functions.rem(40px);
     letter-spacing: functions.rem(.25px);
     font-weight: 600;
+}
+
+a {
+    text-decoration: none;
+    color: variables.$black;
 }

@@ -1,0 +1,30 @@
+@use 'functions';
+@use 'variables';
+@import 'mixins';
+
+.subnav {
+    margin-top: functions.rem(40px);
+    padding-bottom: functions.rem(10px);
+    border-bottom: 1px solid rgba(#000000, .4);
+
+    &__item {
+        padding-bottom: functions.rem(10px);
+        font-size: functions.rem(20px);
+        line-height: functions.rem(24px);
+        font-weight: 500;
+        transition: all .2s;
+
+        &--active {
+            border-bottom: 4px solid variables.$red;
+        }
+
+        &:hover {
+            color: variables.$red;
+        }
+    }
+
+    &__item + &__item {
+        margin-left: functions.rem(20px);
+    }
+}
+

@@ -1,0 +1,9 @@
+@use 'functions';
+
+.event {
+    &__content {
+        width: 80%;
+        margin: 0 auto;
+        padding-top: functions.rem(80px);
+    }
+}
